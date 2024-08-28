@@ -204,7 +204,7 @@ function Board(props: Props) {
           {isBoardEmpty ? (
             <TasksPlaceholder />
           ) : (
-            <Items items={board.items} dispatch={dispatch} />
+            <Items items={board.items} />
           )}
         </Stack>
       </Stack>

@@ -7,21 +7,20 @@ import {
 } from '@mui/material'
 import { Actions, Item as TItem } from '../types'
 import { useNavigate } from 'react-router-dom'
-import React, { DragEventHandler } from 'react'
+import React from 'react'
 
 interface Props {
   items: TItem[]
-  dispatch: React.Dispatch<Actions>
 }
 
 function Items(props: Props) {
-  const { items, dispatch } = props
+  const { items } = props
 
   return (
     <List
     >
       {items.map((item) => {
-        return <Item key={item.id} item={item} dispatch={dispatch} />
+        return <Item key={item.id} item={item} />
       })}
     </List>
   )
@@ -29,11 +28,10 @@ function Items(props: Props) {
 
 interface ItemProps {
   item: TItem
-  dispatch: React.Dispatch<Actions>
 }
 
 function Item(props: ItemProps) {
-  const { item, dispatch } = props
+  const { item } = props
   const navigate = useNavigate()
 
   function handleItemClick() {

@@ -7,7 +7,6 @@ import {
   FormControlLabel,
   FormLabel,
   Grid2,
-  Icon,
   Modal,
   Stack,
   TextField,
@@ -21,7 +20,7 @@ import {
 } from 'react-router-dom'
 import { selectTaskFromBoards } from '../helper'
 import { Actions, Board, Item } from '../types'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Pill from './Pill'
 
 interface OutletContext {
@@ -124,7 +123,7 @@ function NewTaskModal() {
   }
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    const { name, value: _value, checked } = e.target
+    const { name, value: _value } = e.target
     let value: any = _value
 
     if (name === 'favorite') {
