@@ -1,33 +1,61 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import useBoards from './usecases/useBoards'
+import { Box, Button, Stack, Typography } from '@mui/material'
 import './App.css'
+import { Board } from './ui'
+import { Outlet } from 'react-router-dom'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [boards, dispatch] = useBoards()
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Box>
+        <Stack
+          direction="row"
+          sx={{
+            paddingBlock: 2,
+          }}
+        >
+          <Typography
+            variant="h5"
+            color="textPrimary"
+            fontWeight={500}
+            gutterBottom
+          >
+            Boards
+          </Typography>
+
+          <Button
+            variant="contained"
+            sx={{
+              marginLeft: 'auto',
+            }}
+            disableElevation
+            disableRipple
+            onClick={() => {
+              dispatch({ type: 'add-board' })
+            }}
+          >
+            Add Board
+          </Button>
+        </Stack>
+
+        <Stack
+          direction="row"
+          spacing={2}
+          sx={{
+            padding: 2,
+            borderRadius: 2,
+            backgroundColor: '#d0d0d0',
+            overflowX: 'scroll',
+          }}
+        >
+          {boards.map((board, idx) => {
+            return <Board key={idx} board={board} dispatch={dispatch} />
+          })}
+        </Stack>
+      </Box>
+      <Outlet context={{ dispatch, boards }} />
     </>
   )
 }
