@@ -12,7 +12,7 @@ function reducer(state: Board[], action: Actions): Board[] {
 
     return dupeState
   } else if (action.type === 'add-board') {
-    const newBoard = { ...NEW_BOARD }
+    const newBoard: Board = { ...NEW_BOARD, items: [] }
     newBoard.id = Date.now()
 
     const isDuplicate =
@@ -29,7 +29,6 @@ function reducer(state: Board[], action: Actions): Board[] {
     return state.filter((board) => board.id !== id)
   } else if (action.type === 'upsert-item') {
     const { item } = action.payload
-    console.log({ item })
 
     const boardIdx = state.findIndex((board) => board.id === item.boardId)
 
@@ -44,9 +43,9 @@ function reducer(state: Board[], action: Actions): Board[] {
     const itemIdx = board.items.findIndex((_item) => _item.id === item.id)
     const hasItem = itemIdx !== -1
     if (hasItem) {
-      board.items[itemIdx] = item
+      board.items[itemIdx] = { ...item }
     } else {
-      board.items.push(item)
+      board.items.push({ ...item })
     }
 
     state[boardIdx] = board

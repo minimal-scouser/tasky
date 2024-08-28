@@ -9,6 +9,6 @@ const NEW_BOARD: Board = {
   items: [],
 }
 
-const DEFAULT_STATE: Board[] = [NEW_BOARD]
+const DEFAULT_STATE: Board[] = [{...NEW_BOARD}]
 
 export { cacheKeyForBoards, NEW_BOARD, DEFAULT_STATE }
