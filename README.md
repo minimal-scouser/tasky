@@ -8,3 +8,6 @@ A task management app
 CRUD:
 1. Board
 2. Item
+
+<img width="1512" alt="Screenshot 2024-08-29 at 4 11 47 AM" src="https://github.com/user-attachments/assets/50237405-9074-44e4-aad1-d49233b807cd">
+<img width="1512" alt="Screenshot 2024-08-29 at 4 11 57 AM" src="https://github.com/user-attachments/assets/4864be6d-0978-4594-8627-d0a4a9e3b744">
