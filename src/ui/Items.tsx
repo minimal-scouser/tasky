@@ -5,9 +5,8 @@ import {
   Stack,
   Typography,
 } from '@mui/material'
-import { Actions, Item as TItem } from '../types'
+import { Item as TItem } from '../types'
 import { useNavigate } from 'react-router-dom'
-import React from 'react'
 
 interface Props {
   items: TItem[]
@@ -17,8 +16,7 @@ function Items(props: Props) {
   const { items } = props
 
   return (
-    <List
-    >
+    <List>
       {items.map((item) => {
         return <Item key={item.id} item={item} />
       })}
@@ -54,8 +52,7 @@ function Item(props: ItemProps) {
         draggable
         onDragStart={(e) => {
           e.dataTransfer.setData('text/plain', JSON.stringify(item))
-          e.dataTransfer.effectAllowed = "move";
-
+          e.dataTransfer.effectAllowed = 'move'
         }}
       >
         <Stack spacing={2}>
