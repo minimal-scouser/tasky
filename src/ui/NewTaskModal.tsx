@@ -75,11 +75,8 @@ function NewTaskModal() {
     setFormData(task)
 
     const newTask = task.id === 0
-    if (newTask) {
-      setIsNewForm(newTask)
-      setIsEditMode(newTask)
-      return
-    }
+    setIsNewForm(newTask)
+    setIsEditMode(newTask)
   }, [task.id])
 
   function goBack() {
